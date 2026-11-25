@@ -15,6 +15,7 @@ void main() async {
       supportedLocales: const [Locale('ar'), Locale('en')],
       path: 'assets/translations',
       fallbackLocale: const Locale('en'),
+      useOnlyLangCode: true,
       startLocale: WidgetsBinding.instance.platformDispatcher.locale,
       saveLocale: true,
       child: const ProviderScope(child: OFOQ()),
