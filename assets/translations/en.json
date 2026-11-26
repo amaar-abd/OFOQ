@@ -1,8 +1,16 @@
 {
-    "app_name": "OFOQ",
-  "welcome": "Welcome to OFOQ",
-  "get_started": "Get Started",
-  "login": "Login",
-  "create_account": "Create Account"
+"onboarding": {
+    "page1_start": "Discover ",
+    "page1_accent": "opportunities",
+    "page1_description": "Discover job opportunities that match your ambitions",
+    "page2_start": "Grow ",
+    "page2_accent": "your career",
+    "page2_description": "Your professional journey starts with the right opportunity",
+    "page3_start": "Connect with ",
+    "page3_accent": "companies",
+    "page3_description": "Meet companies and get closer to your future",
+    "next": "Next",
+    "start": "Get Started"
+  }
 
 }

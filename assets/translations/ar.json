@@ -1,8 +1,16 @@
 
 {
-  "app_name": "أُفُق",
-  "welcome": "أهلاً بك في أُفُق",
-  "get_started": "ابدأ الآن",
-  "login": "تسجيل الدخول",
-  "create_account": "إنشاء حساب"
+    "onboarding": {
+    "page1_start": "اكتشف ",
+    "page1_accent": "فرصتك",
+    "page1_description": "اكتشف فرص العمل المناسبة لطموحك",
+    "page2_start": "طوّر ",
+    "page2_accent": "مسيرتك",
+    "page2_description": "خطواتك المهنية تبدأ بفرصة مناسبة",
+    "page3_start": "تواصل مع ",
+    "page3_accent": "الشركات",
+    "page3_description": "التقِ بالشركات واقترب من مستقبلك",
+    "next": "التالي",
+    "start": "ابدأ الآن"
+  }
 }
