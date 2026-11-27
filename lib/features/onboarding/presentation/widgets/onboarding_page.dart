@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ofoq/core/constants/app_dimensions.dart';
 
 import 'onboarding_clipper.dart';
 
@@ -27,8 +29,12 @@ class OnboardingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
     return LayoutBuilder(
       builder: (context, constraints) {
+        final isSmallHeight = constraints.maxHeight < 750;
+
         return Stack(
           children: [
             // Background Image
@@ -50,10 +56,16 @@ class OnboardingPage extends StatelessWidget {
                 clipper: OnboardingClipper(),
                 child: Container(
                   color: Colors.white,
-                  padding: const EdgeInsets.fromLTRB(28, 55, 28, 30),
+                  padding: EdgeInsets.fromLTRB(
+                    AppDimensions.pageHorizontal,
+                    isSmallHeight ? 40.h : 55.h,
+                    AppDimensions.pageHorizontal,
+                    isSmallHeight ? 20.h : 30.h,
+                  ),
                   child: Column(
                     children: [
-                      const SizedBox(height: 40),
+                      SizedBox(height: isSmallHeight ? 24.h : 40.h),
+
                       // Title
                       Text.rich(
                         TextSpan(
@@ -61,26 +73,27 @@ class OnboardingPage extends StatelessWidget {
                             TextSpan(text: titleStart),
                             TextSpan(
                               text: titleAccent,
+
                               style: const TextStyle(color: gold),
                             ),
                           ],
                         ),
                         textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          fontSize: 27,
-                          fontWeight: FontWeight.bold,
+                        style: textTheme.headlineMedium?.copyWith(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 26.sp,
                           color: navy,
                         ),
                       ),
 
-                      const SizedBox(height: 20),
+                      SizedBox(height: isSmallHeight ? 12.h : 20.h),
 
                       // Description
                       Text(
                         description,
                         textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          fontSize: 17,
+                        style: textTheme.bodyLarge?.copyWith(
+                          fontSize: 16,
                           height: 1.7,
                           color: navy,
                         ),
@@ -96,9 +109,13 @@ class OnboardingPage extends StatelessWidget {
 
                           return AnimatedContainer(
                             duration: const Duration(milliseconds: 250),
-                            margin: const EdgeInsets.symmetric(horizontal: 4),
-                            width: isActive ? 12 : 9,
-                            height: isActive ? 12 : 9,
+                            margin: EdgeInsets.symmetric(horizontal: 4.w),
+                            width: isActive
+                                ? AppDimensions.onboardingIndicatorActive
+                                : AppDimensions.onboardingIndicatorInactive,
+                            height: isActive
+                                ? AppDimensions.onboardingIndicatorActive
+                                : AppDimensions.onboardingIndicatorInactive,
                             decoration: BoxDecoration(
                               color: isActive ? gold : const Color(0xFFD0D4DE),
                               shape: BoxShape.circle,
@@ -107,34 +124,34 @@ class OnboardingPage extends StatelessWidget {
                         }),
                       ),
 
-                      const SizedBox(height: 24),
+                      SizedBox(height: isSmallHeight ? 16.h : 24.h),
 
                       // Next Button
                       SizedBox(
                         width: double.infinity,
-                        height: 56,
+                        height: AppDimensions.buttonHeight,
                         child: ElevatedButton(
                           onPressed: onNext,
                           style: ElevatedButton.styleFrom(
                             backgroundColor: navy,
                             foregroundColor: Colors.white,
                             elevation: 3,
+                            textStyle: textTheme.labelLarge,
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(32),
+                              borderRadius: BorderRadius.circular(
+                                AppDimensions.radiusXL,
+                              ),
                             ),
                           ),
                           child: Row(
                             children: [
                               const Spacer(),
-                              Text(
-                                buttonText,
-                                style: const TextStyle(
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
+                              Text(buttonText),
                               const Spacer(),
-                              const Icon(Icons.arrow_forward_rounded),
+                              Icon(
+                                Icons.arrow_forward_rounded,
+                                size: AppDimensions.iconLarge,
+                              ),
                             ],
                           ),
                         ),

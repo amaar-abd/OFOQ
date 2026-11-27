@@ -1,21 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ofoq/core/constants/app_constants.dart';
+import 'package:ofoq/core/providers/shared_preferences_provider.dart';
 import 'package:ofoq/core/utils/app_images.dart';
 import 'package:ofoq/features/onboarding/presentation/widgets/onboarding_page.dart';
 
-class OnboardingScreen extends StatefulWidget {
+class OnboardingScreen extends ConsumerStatefulWidget {
   const OnboardingScreen({super.key, required this.onFinished});
 
   final VoidCallback onFinished;
 
   @override
-  State<OnboardingScreen> createState() => _OnboardingScreenState();
+  ConsumerState<OnboardingScreen> createState() => _OnboardingScreenState();
 }
 
-class _OnboardingScreenState extends State<OnboardingScreen> {
+class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   late final PageController _pageController;
 
   int _currentPage = 0;
+  bool _isFinishing = false;
 
   @override
   void initState() {
@@ -36,8 +40,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         curve: Curves.easeInOut,
       );
     } else {
-      widget.onFinished();
+      _finishOnboarding();
     }
+  }
+
+  Future<void> _finishOnboarding() async {
+    if (_isFinishing) return;
+    _isFinishing = true;
+    final prefs = await ref.read(sharedPreferencesServiceProvider.future);
+    await prefs.setBool(AppConstants.onboardingKey, true);
+    if (!mounted) return;
+    widget.onFinished();
   }
 
   @override
