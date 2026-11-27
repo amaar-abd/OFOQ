@@ -2,20 +2,25 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ofoq/core/constants/supabase_keys.dart';
 import 'package:ofoq/core/routes/app_router.dart';
 import 'package:ofoq/core/theme/app_theme.dart';
 import 'package:ofoq/core/theme/theme_provider.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
-final deviceLocale =
-    WidgetsBinding.instance.platformDispatcher.locale;
+  await Supabase.initialize(
+    url: SupabaseKeys.projectUrl,
+    publishableKey: SupabaseKeys.publishableKey,
+  );
+  final deviceLocale = WidgetsBinding.instance.platformDispatcher.locale;
 
-final initialLocale = deviceLocale.languageCode.startsWith('ar')
-    ? const Locale('ar')
-    : const Locale('en');
-    
+  final initialLocale = deviceLocale.languageCode.startsWith('ar')
+      ? const Locale('ar')
+      : const Locale('en');
+
   runApp(
     EasyLocalization(
       supportedLocales: const [Locale('ar'), Locale('en')],
