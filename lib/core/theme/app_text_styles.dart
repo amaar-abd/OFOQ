@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 class AppFontFamilies {
-  static const String arabic = 'IBMPlexSansArabic';
+  static const String arabic = 'Alexandria';
+  // static const String arabic = 'IBMPlexSansArabic';
   static const String english = 'PlusJakartaSans';
 
-  static String get current {
-    final languageCode = Intl.getCurrentLocale().split('_').first;
-    return languageCode == 'ar' ? arabic : english;
+  static String forLocale(Locale locale) {
+    return locale.languageCode == 'ar' ? arabic : english;
   }
 }
 
@@ -93,7 +92,7 @@ class AppTextStyles {
     String? fontFamily,
   }) {
     return TextStyle(
-     fontFamily: fontFamily ?? AppFontFamilies.current,
+      fontFamily: fontFamily,
       fontSize: fontSize,
       fontWeight: fontWeight,
       height: height,

@@ -4,19 +4,25 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ofoq/core/routes/app_router.dart';
 import 'package:ofoq/core/theme/app_theme.dart';
-import 'package:ofoq/core/theme/theme_orovider.dart';
+import 'package:ofoq/core/theme/theme_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+final deviceLocale =
+    WidgetsBinding.instance.platformDispatcher.locale;
 
+final initialLocale = deviceLocale.languageCode.startsWith('ar')
+    ? const Locale('ar')
+    : const Locale('en');
+    
   runApp(
     EasyLocalization(
       supportedLocales: const [Locale('ar'), Locale('en')],
       path: 'assets/translations',
       fallbackLocale: const Locale('en'),
       useOnlyLangCode: true,
-      startLocale: WidgetsBinding.instance.platformDispatcher.locale,
+      startLocale: initialLocale,
       saveLocale: true,
       child: const ProviderScope(child: OFOQ()),
     ),

@@ -17,6 +17,7 @@ static ThemeData dark(Locale locale) {
     final bool isDark = brightness == Brightness.dark;
 
     return ThemeData(
+      fontFamily: AppFontFamilies.forLocale(locale),
       useMaterial3: true,
       brightness: brightness,
 

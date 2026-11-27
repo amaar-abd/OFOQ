@@ -2,13 +2,13 @@
 "onboarding": {
     "page1_start": "Discover ",
     "page1_accent": "opportunities",
-    "page1_description": "Discover job opportunities that match your ambitions",
+    "page1_description": "Explore diverse job opportunities that match your skills and ambitions.",
     "page2_start": "Grow ",
     "page2_accent": "your career",
-    "page2_description": "Your professional journey starts with the right opportunity",
+    "page2_description": "New steps and promising opportunities bring you closer to your career goals.",
     "page3_start": "Connect with ",
     "page3_accent": "companies",
-    "page3_description": "Meet companies and get closer to your future",
+    "page3_description": "Discover the right companies and take the first step toward your dream job.",
     "next": "Next",
     "start": "Get Started"
   }
