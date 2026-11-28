@@ -11,6 +11,20 @@
     "page3_description": "Discover the right companies and take the first step toward your dream job.",
     "next": "Next",
     "start": "Get Started"
+  },
+  "errors": {
+    "network": "Connection failed. Please check your internet connection.",
+    "invalid_credentials": "Incorrect email or password.",
+    "email_already_in_use": "This email address is already in use.",
+    "weak_password": "Your password is too weak. Please choose a stronger one.",
+    "invalid_email": "Invalid email address.",
+    "invalid_otp": "The verification code is incorrect.",
+    "expired_otp": "The verification code has expired. Request a new one.",
+    "user_not_found": "User not found.",
+    "too_many_requests": "Too many attempts. Please try again later.",
+    "session_expired": "Your session has expired. Please sign in again.",
+    "unknown": "Something went wrong. Please try again."
   }
+
 
 }
