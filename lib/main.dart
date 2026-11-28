@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ofoq/core/constants/supabase_keys.dart';
 import 'package:ofoq/core/routes/app_router.dart';
 import 'package:ofoq/core/theme/app_theme.dart';
-import 'package:ofoq/core/theme/theme_provider.dart';
+import 'package:ofoq/core/providers/theme_provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
